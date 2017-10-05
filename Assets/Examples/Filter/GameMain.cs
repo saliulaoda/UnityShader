@@ -40,6 +40,14 @@ public class GameMain : MonoBehaviour {
         mTranGrid = GameObject.Find("Canvas/Grid").transform;
         mTranBtnBase = GameObject.Find("Canvas/Grid/Button").transform;
 
+        Slider _sliderSaturation = GameObject.Find("Canvas/setting/Saturation/Slider").transform.GetComponent<Slider>();
+        Slider _sliderBrightness = GameObject.Find("Canvas/setting/Brightness/Slider").transform.GetComponent<Slider>();
+        Slider _sliderContrast = GameObject.Find("Canvas/setting/Contrast/Slider").transform.GetComponent<Slider>();
+
+        _sliderSaturation.value = 1f;
+        _sliderBrightness.value = 1f;
+        _sliderContrast.value = 1f;
+
         lastSelect = null;
 
         mData.Clear();
@@ -142,5 +150,18 @@ public class GameMain : MonoBehaviour {
             mColorRamp.textureRamp = _data.mTexture;
             mColorRamp.saturation = _data.mShaderParamSaturation;
         }
+    }
+
+    public void SetValue_Saturation(float _val)
+    {
+        mColorRamp.saturation = _val;
+    }
+    public void SetValue_Brightness(float _val)
+    {
+        mColorRamp.brightness = _val;
+    }
+    public void SetValue_Contrast(float _val)
+    {
+        mColorRamp.contrast = _val;
     }
 }
