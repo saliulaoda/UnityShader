@@ -53,10 +53,15 @@ public class GameMain : MonoBehaviour {
         mData.Clear();
         mData.Add(new EffectNode("原图", "", 1f));
         mData.Add(new EffectNode("复古", "Ramp_FuGu.png", 1f));
-        mData.Add(new EffectNode("黑白", "Ramp_HeiBai.png", 0f));
+        mData.Add(new EffectNode("复古1", "Ramp_FuGu_1.png", 1f));
+        mData.Add(new EffectNode("黑白", "Ramp_HeiBai.png", 0.18f));
+        mData.Add(new EffectNode("黑白1", "Ramp_HeiBai_1.png", 0.18f));
         mData.Add(new EffectNode("冷艳", "Ramp_LengYan.png", 1f));
+        mData.Add(new EffectNode("冷艳1", "Ramp_LengYan_1.png", 1f));
         mData.Add(new EffectNode("MONO", "Ramp_LOMO.png", 1f));
+        mData.Add(new EffectNode("MONO1", "Ramp_LOMO_1.png", 1f));
         mData.Add(new EffectNode("梦幻", "Ramp_MengHuan.png", 1f));
+        mData.Add(new EffectNode("梦幻1", "Ramp_MengHuan_1.png", 1f));
 
         for (int i=0;i<mData.Count;++i)
         {

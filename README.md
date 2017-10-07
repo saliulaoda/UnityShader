@@ -3,6 +3,17 @@
 
 ##################################################################################    
 
+#2017-10-07 更新   
+## 高斯模糊    
+-权重矩阵计算邻域内像素的加权平均值去替代中心像素值    
+    
+-Assets\Examples\GaussianBlur    
+-参考    
+http://blog.csdn.net/cbbbc/article/details/68490605   
+http://blog.csdn.net/poem_qianmo/article/details/51871531   
+
+##################################################################################    
+
 #2017-10-05 更新   
 ## 饱和度，亮度，对比度    
 -饱和度    
@@ -18,7 +29,8 @@
 一般来说对比度越大，图像越清晰醒目，色彩也越鲜明艳丽；而对比度小，则会让整个画面都灰蒙蒙的    
     
 -Assets\Examples\Filter    
--博主http://blog.csdn.net/puppet_master/article/details/52423905   
+-参考    
+http://blog.csdn.net/puppet_master/article/details/52423905   
 
 ##################################################################################    
 
@@ -36,8 +48,9 @@
 -顶点着色器阶段修改坐标，从而修改网格形状    
 -Assets\Examples\VertexAnimate    
 -常见用途，模拟动画，比如水波浪，树叶，草，头发，飘带，旗帜的风动    
--摘自 《Unity Shader入门精要》 冯乐乐    
- 博主http://superzhan.cn/blog/2016/08/17/unity_surface_vertex/    
+-参考    
+《Unity Shader入门精要》 冯乐乐    
+ http://superzhan.cn/blog/2016/08/17/unity_surface_vertex/    
 
 ##################################################################################    
 
@@ -46,7 +59,8 @@
 -时间轴上更改采样UV，达到更改渲染结果的目的    
 -Assets\Examples\TextureAnimation    
 -常见用途，动画表情，滚动物体（背景，水，瀑布），原理简单，适用性强，性能压力也不大    
--摘自 《Unity Shader入门精要》 冯乐乐    
+-参考
+《Unity Shader入门精要》 冯乐乐    
 
 ##################################################################################    
 
@@ -57,4 +71,5 @@
 -PS：    
 	-1，OnWillRenderObject的时候计算一次相机位置    
 	-2，镜像相机culling mask需要忽略镜面          
--摘自博主http://www.gad.qq.com/article/detail/18544    
+-参考    
+http://www.gad.qq.com/article/detail/18544    
