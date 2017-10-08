@@ -4,15 +4,18 @@ using System.Collections;
 using System.Collections.Generic;
 
 [ExecuteInEditMode]
-[AddComponentMenu("Image Effects/GaussianBlur_x5")]
-public class GaussianBlur : ImageEffect
+[AddComponentMenu("Image Effects/Bloom")]
+public class Bloom : ImageEffect
 {
     [Range(0.0f, 2.0f)]
     public float BlurSize = 1;
-    [Range(0, 3)]
+    [Range(1, 4)]
     public int BlurIterations = 2;
     [Range(1, 8)]
     public int DownSample = 2;
+
+    [Range(0.0f, 4.0f)]
+    public float luminanceThreshold = 0.6f;
 
     public static RenderTexture blurTexture;
     public RawImage gaussianImage;
@@ -31,7 +34,10 @@ public class GaussianBlur : ImageEffect
             //定义一张分辨率是1/DownSample原尺寸的RenderTexture，把sourceTexture缩放到里面
             RenderTexture rtTempA = RenderTexture.GetTemporary(rtW, rtH, 16, sourceTexture.format);
             rtTempA.filterMode = FilterMode.Bilinear;
-            Graphics.Blit(sourceTexture, rtTempA);//缩放到rtTempA里面，完成采样
+
+            material.SetFloat("_luminanceThreshold", luminanceThreshold);
+            //亮度阈值扫描
+            Graphics.Blit(sourceTexture, rtTempA, material, 0);
 
             for (int i = 0; i < BlurIterations; i++)
             {
@@ -41,19 +47,21 @@ public class GaussianBlur : ImageEffect
                 //vertical blur
                 RenderTexture rtTempB = RenderTexture.GetTemporary(rtW, rtH, 16, sourceTexture.format);
                 rtTempB.filterMode = FilterMode.Bilinear;
-                Graphics.Blit(rtTempA, rtTempB, material, 0);
+                Graphics.Blit(rtTempA, rtTempB, material, 1);
                 RenderTexture.ReleaseTemporary(rtTempA);
                 rtTempA = rtTempB;
 
                 //horizontal blur
                 rtTempB = RenderTexture.GetTemporary(rtW, rtH, 16, sourceTexture.format);
                 rtTempB.filterMode = FilterMode.Bilinear;
-                Graphics.Blit(rtTempA, rtTempB, material, 1);
+                Graphics.Blit(rtTempA, rtTempB, material, 2);
                 RenderTexture.ReleaseTemporary(rtTempA);
                 rtTempA = rtTempB;
             }
 
-            Graphics.Blit(rtTempA, destTexture);
+            material.SetTexture("_Bloom", rtTempA);
+
+            Graphics.Blit(sourceTexture, destTexture, material, 3);
 
             RenderTexture.ReleaseTemporary(rtTempA);
         }

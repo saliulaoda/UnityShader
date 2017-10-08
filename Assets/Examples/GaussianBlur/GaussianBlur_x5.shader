@@ -17,7 +17,7 @@
 
 		static const half curve[2] = {0.238, 0.524};  
 
-		static const half4 coordOffs = half4(2.0h,2.0h,-2.0h,-2.0h);
+		static const half4 coordOffs = half4(1.0h, 1.0h, -1.0h, -1.0h);
 
 		struct v2f_withBlurCoordsSGX
 		{
@@ -68,35 +68,24 @@
 	ENDCG
 	
 	SubShader {
-	   ZTest Off
-	   ZWrite Off
-	   Blend Off
-
-
-
-	Pass {
 		ZTest Always
-		
-		
-		CGPROGRAM 
-		
-		#pragma vertex vertBlurVerticalSGX
-		#pragma fragment fragBlurSGX
-		
-		ENDCG
-		}	
-		
-
-	Pass {		
-		ZTest Always
-		
-				
-		CGPROGRAM
-		
-		#pragma vertex vertBlurHorizontalSGX
-		#pragma fragment fragBlurSGX
-		
-		ENDCG
+		Cull Off
+		ZWrite Off
+		Blend Off
+			
+		Pass {
+			NAME "GAUSSIAN_BLUR_X5_VERTICAL"
+			CGPROGRAM 
+			#pragma vertex vertBlurVerticalSGX
+			#pragma fragment fragBlurSGX
+			ENDCG
+		}
+		Pass {
+			NAME "GAUSSIAN_BLUR_X5_HORIZONTAL"
+			CGPROGRAM
+			#pragma vertex vertBlurHorizontalSGX
+			#pragma fragment fragBlurSGX
+			ENDCG
 		}	
 	}	
 	//屏幕后效果 一般关闭FallBack 失败就不显示
