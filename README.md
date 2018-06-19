@@ -3,6 +3,19 @@
 
 ##################################################################################    
 
+#2018-06-19 更新   
+## Distort    
+! [基于噪声图的扭曲效果 ] (https://github.com/saliulaoda/UnityShader/blob/master/Assets/Examples/Distort/DistortEffectScreenshot.png)；    
+-扭曲Distort效果（基于给定的噪声图给像素加偏移）    
+-资源上传，新增一个特效资源包（https://assetstore.unity.com/packages/essentials/asset-packs/unity-particle-pack-73777）    
+    
+-Assets\Examples\Distort    
+-参考    
+https://blog.csdn.net/puppet_master/article/details/70199330    
+
+
+##################################################################################    
+
 #2017-10-08 更新   
 ## Bloom    
 -图像中较亮处向周围扩散，造成一种朦胧的效果    
